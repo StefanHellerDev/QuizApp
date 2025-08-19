@@ -11,33 +11,68 @@
   <link rel="stylesheet" href="./styles/standard.css">
   <link rel="stylesheet" href="./style.css">
   <link rel="stylesheet" href="./styles/assets.css">
-  <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css"> -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
 
   <script src="./scripts/template.js" defer></script>
   <script src="./script.js" defer></script>
+  <!-- <script src="./node_modules/bootstrap/dist/js/bootstrap.js" defer></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+    crossorigin="anonymous"></script>
 </head>
 
 <body>
 
-  <header>
-    <h1>QuizApp</h1>
-  </header>
-
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur dolor temporibus ex repellat quis praesentium, dicta harum omnis quae. Molestias deleniti qui, quia illo ipsum repellat. Magni explicabo obcaecati nam.</p>
-
-  <button class="btn btn-primary">Action!</button>
-
-  Das hiwer ist ein <a href="#">Link!</a>
-  <nav>
+  <nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+      <span class="navbar-brand mb-0 h1">QuizApp</span>
+    </div>
   </nav>
+  <div class="container">
+    <div class="card quiz-card">
+      <img src="./assets/img/abc.jpg" class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title">Frage</h5>
 
-  <main>
-    <section>
-    </section>
-  </main>
 
-  <footer>
-  </footer>
+        <div class="card mb-2">
+          <div class="card-body">
+            Antwort
+          </div>
+        </div>
+
+        <div class="card mb-2">
+          <div class="card-body">
+            Antwort
+          </div>
+        </div>
+
+        <div class="card mb-2">
+          <div class="card-body">
+            Antwort
+          </div>
+        </div>
+
+        <div class="card mb-2">
+          <div class="card-body">
+            Antwort
+          </div>
+        </div>
+
+        <div class="question-footer">
+          <span>
+            <b>1</b> von <b>5</b> Fragen
+          </span>
+
+          <button class="btn btn-primary">Nächste Frage</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
 </body>
 
 </html>
