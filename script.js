@@ -1,10 +1,10 @@
 let questions = [
     {
         "question" : "Welches HTML-Tag wird verwendet, um ein externes JavaScript einzubinden?",
-        "answer_1" : "<javascript>",
-        "answer_2" : "<js>",
-        "answer_3" : "<script>",
-        "answer_4" : "<link>",
+        "answer_1" : "\< javascript \>",
+        "answer_2" : "\< js \>",
+        "answer_3" : "\< script \>",
+        "answer_4" : "\< link \>",
         "rightAnswer" : 3
     },
     {
@@ -49,3 +49,21 @@ let questions = [
     }
 ];
 
+function init() {
+    document.getElementById("amountOfQuestions").innerHTML = questions.length;
+    showQuestion();
+}
+
+let currentQuestion = 3;
+
+function showQuestion() {
+    let question = questions[currentQuestion];
+    console.log(question);
+    
+    document.getElementById("questiontext").innerHTML = question['question'];
+    document.getElementById("answer_1").innerHTML = question['answer_1'];
+    document.getElementById("answer_2").innerHTML = question['answer_2'];
+    document.getElementById("answer_3").innerHTML = question['answer_3'];
+    document.getElementById("answer_4").innerHTML = question['answer_4'];
+    document.getElementById("actualQuestion").innerHTML = currentQuestion + 1;
+}
