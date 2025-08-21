@@ -54,16 +54,24 @@ function init() {
     showQuestion();
 }
 
-let currentQuestion = 3;
+let currentQuestion = 4;
 
 function showQuestion() {
     let question = questions[currentQuestion];
-    console.log(question);
-    
     document.getElementById("questiontext").innerHTML = question['question'];
     document.getElementById("answer_1").innerHTML = question['answer_1'];
     document.getElementById("answer_2").innerHTML = question['answer_2'];
     document.getElementById("answer_3").innerHTML = question['answer_3'];
     document.getElementById("answer_4").innerHTML = question['answer_4'];
     document.getElementById("actualQuestion").innerHTML = currentQuestion + 1;
+}
+
+function checkAnswer(answer) {
+    if (answer == "answer_" + questions[currentQuestion].rightAnswer) {
+        console.log("Success!");
+        document.getElementById(answer).parentNode.classList.add('text-bg-success');
+    } else {
+        console.log("Falsch!");
+        document.getElementById(answer).parentNode.classList.add('text-bg-danger');
+    }
 }
