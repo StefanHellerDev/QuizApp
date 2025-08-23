@@ -54,7 +54,7 @@ function init() {
   showQuestion();
 }
 
-let currentQuestion = 5;
+let currentQuestion = 0;
 let correctAnswers = 0;
 
 function showQuestion() {
@@ -76,6 +76,12 @@ function showQuestion() {
     document.getElementById("answer_3").innerHTML = question["answer_3"];
     document.getElementById("answer_4").innerHTML = question["answer_4"];
     document.getElementById("actual-question").innerHTML = currentQuestion + 1;
+    let progress = 0;
+    progress = currentQuestion / questions.length;
+    console.log(progress);
+    document.getElementById('progressBar').style.width = progress*100 + '%';
+    document.getElementById('progressBar').innerHTML = `${Math.round(progress*100)} %`;
+    document.getElementById('progress-bar').setAttribute("aria-valuenow", progress*100);
   }
 }
 
