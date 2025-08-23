@@ -32,11 +32,19 @@
   </nav>
   <div class="container">
     <div class="card quiz-card">
-      <img src="./assets/img/abc.jpg" class="card-img-top">
+      <img src="./assets/img/abc.jpg" class="card-img-top" id="header-image">
 
       <div class="card-body d_none" id="bodyQuizInactive">
+        <div class="text-center final-headline">
+          Quiz beendet!
+        </div>
+
+        <div class="text-center">
+          Du hast <b id="correctAnswers"></b> von <b id="trophyAmountOfQuestions">XXX</b> Fragen richtig beantwortet!
+        </div>
+
       </div>
-      
+
       <div class="card-body" id="bodyQuizActive">
         <h5 class="card-title" id="questiontext">Frage</h5>
 

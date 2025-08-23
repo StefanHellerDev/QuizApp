@@ -54,25 +54,36 @@ function init() {
   showQuestion();
 }
 
-let currentQuestion = 0;
+let currentQuestion = 5;
+let correctAnswers = 0;
 
 function showQuestion() {
-  //   console.log("Current question:", currentQuestion + 1);
-  //   console.log("Right answer:", questions[currentQuestion].rightAnswer);
+  if (currentQuestion == questions.length) {
+    // console.log("Ende");
+    document.getElementById("bodyQuizActive").classList.toggle("d_none");
+    document.getElementById("bodyQuizInactive").classList.toggle("d_none");
+    document.getElementById("header-image").setAttribute("src", "./assets/img/trophy.png");
+    document.getElementById("trophyAmountOfQuestions").innerHTML = questions.length;
+    document.getElementById("correctAnswers").innerHTML = correctAnswers;
+  } else {
+    //   console.log("Current question:", currentQuestion + 1);
+    //   console.log("Right answer:", questions[currentQuestion].rightAnswer);
 
-  let question = questions[currentQuestion];
-  document.getElementById("questiontext").innerHTML = question["question"];
-  document.getElementById("answer_1").innerHTML = question["answer_1"];
-  document.getElementById("answer_2").innerHTML = question["answer_2"];
-  document.getElementById("answer_3").innerHTML = question["answer_3"];
-  document.getElementById("answer_4").innerHTML = question["answer_4"];
-  document.getElementById("actual-question").innerHTML = currentQuestion + 1;
+    let question = questions[currentQuestion];
+    document.getElementById("questiontext").innerHTML = question["question"];
+    document.getElementById("answer_1").innerHTML = question["answer_1"];
+    document.getElementById("answer_2").innerHTML = question["answer_2"];
+    document.getElementById("answer_3").innerHTML = question["answer_3"];
+    document.getElementById("answer_4").innerHTML = question["answer_4"];
+    document.getElementById("actual-question").innerHTML = currentQuestion + 1;
+  }
 }
 
 function checkAnswer(answer) {
   if (answer == "answer_" + questions[currentQuestion].rightAnswer) {
     // console.log("Richtig!");
     document.getElementById(answer).parentNode.classList.add("text-bg-success");
+    correctAnswers++;
   } else {
     // console.log("Falsch!");
     document.getElementById(answer).parentNode.classList.add("text-bg-danger");
@@ -83,12 +94,7 @@ function checkAnswer(answer) {
 
 function nextQuestion() {
   currentQuestion++;
-  if (currentQuestion == questions.length) {
-    console.log("Ende");
-    document.getElementById('bodyQuizActive').classList.toggle('d_none');
-    document.getElementById('bodyQuizinActive').classList.toggle('d_none');
-  }
-  console.log(currentQuestion);
+  //   console.log(currentQuestion);
   resetAnswerButtons();
   showQuestion();
 }

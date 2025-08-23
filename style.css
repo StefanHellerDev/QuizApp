@@ -1,26 +1,38 @@
 body {
-    background-color: #007AFF !important;
+  background-color: #007aff !important;
 }
 
 .container {
-    min-height: 100vh;
-    background-color: #007AFF !important;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  min-height: 100vh;
+  background-color: #007aff !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .question-footer {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .quiz-card {
-    width: 30rem;
+  width: 30rem;
 }
 
 .quiz-answer-card:hover {
-    cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
+.width-100 {
+  width: 100%;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.final-headline {
+  font-size: 38px;
+  margin-bottom: 32px;
+}
