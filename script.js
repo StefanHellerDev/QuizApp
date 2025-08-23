@@ -54,7 +54,7 @@ function init() {
   showQuestion();
 }
 
-let currentQuestion = 0;
+let currentQuestion = 5;
 let correctAnswers = 0;
 
 function showQuestion() {
@@ -79,9 +79,9 @@ function showQuestion() {
     let progress = 0;
     progress = currentQuestion / questions.length;
     console.log(progress);
-    document.getElementById('progressBar').style.width = progress*100 + '%';
-    document.getElementById('progressBar').innerHTML = `${Math.round(progress*100)} %`;
-    document.getElementById('progress-bar').setAttribute("aria-valuenow", progress*100);
+    document.getElementById("progressBar").style.width = progress * 100 + "%";
+    document.getElementById("progressBar").innerHTML = `${Math.round(progress * 100)} %`;
+    document.getElementById("progress-bar").setAttribute("aria-valuenow", progress * 100);
   }
 }
 
@@ -111,4 +111,13 @@ function resetAnswerButtons() {
     document.getElementById("answer_" + index).parentNode.classList.remove("text-bg-danger");
     document.getElementById("next-button").disabled = true;
   }
+}
+
+function restartGame() {
+  currentQuestion = 0;
+  correctAnswers = 0;
+  document.getElementById("bodyQuizActive").classList.toggle("d_none");
+  document.getElementById("bodyQuizInactive").classList.toggle("d_none");
+  document.getElementById("header-image").setAttribute("src", "./assets/img/abc.jpg");
+  init();
 }
