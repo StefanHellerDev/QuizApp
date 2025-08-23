@@ -57,8 +57,8 @@ function init() {
 let currentQuestion = 0;
 
 function showQuestion() {
-  console.log("Current question:", currentQuestion + 1);
-  console.log("Right answer:", questions[currentQuestion].rightAnswer);
+  //   console.log("Current question:", currentQuestion + 1);
+  //   console.log("Right answer:", questions[currentQuestion].rightAnswer);
 
   let question = questions[currentQuestion];
   document.getElementById("questiontext").innerHTML = question["question"];
@@ -66,15 +66,15 @@ function showQuestion() {
   document.getElementById("answer_2").innerHTML = question["answer_2"];
   document.getElementById("answer_3").innerHTML = question["answer_3"];
   document.getElementById("answer_4").innerHTML = question["answer_4"];
-  document.getElementById("actualQuestion").innerHTML = currentQuestion + 1;
+  document.getElementById("actual-question").innerHTML = currentQuestion + 1;
 }
 
 function checkAnswer(answer) {
   if (answer == "answer_" + questions[currentQuestion].rightAnswer) {
-    console.log("Richtig!");
+    // console.log("Richtig!");
     document.getElementById(answer).parentNode.classList.add("text-bg-success");
   } else {
-    console.log("Falsch!");
+    // console.log("Falsch!");
     document.getElementById(answer).parentNode.classList.add("text-bg-danger");
     document.getElementById("answer_" + questions[currentQuestion].rightAnswer).parentNode.classList.add("text-bg-success");
   }
@@ -83,9 +83,20 @@ function checkAnswer(answer) {
 
 function nextQuestion() {
   currentQuestion++;
+  if (currentQuestion == questions.length) {
+    console.log("Ende");
+    document.getElementById('bodyQuizActive').classList.toggle('d_none');
+    document.getElementById('bodyQuizinActive').classList.toggle('d_none');
+  }
+  console.log(currentQuestion);
+  resetAnswerButtons();
+  showQuestion();
+}
+
+function resetAnswerButtons() {
   for (let index = 1; index < 5; index++) {
     document.getElementById("answer_" + index).parentNode.classList.remove("text-bg-success");
     document.getElementById("answer_" + index).parentNode.classList.remove("text-bg-danger");
+    document.getElementById("next-button").disabled = true;
   }
-  showQuestion();
 }
