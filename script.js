@@ -49,53 +49,66 @@ let questions = [
   },
 ];
 
+let currentQuestion = 0;
+let correctAnswers = 0;
+
 function init() {
   document.getElementById("amountOfQuestions").innerHTML = questions.length;
   showQuestion();
 }
 
-let currentQuestion = 5;
-let correctAnswers = 0;
-
 function showQuestion() {
-  if (currentQuestion == questions.length) {
-    // console.log("Ende");
-    document.getElementById("bodyQuizActive").classList.toggle("d_none");
-    document.getElementById("bodyQuizInactive").classList.toggle("d_none");
-    document.getElementById("header-image").setAttribute("src", "./assets/img/trophy.png");
-    document.getElementById("trophyAmountOfQuestions").innerHTML = questions.length;
-    document.getElementById("correctAnswers").innerHTML = correctAnswers;
+  if (gameOver()) {
+    showEndScreen();
   } else {
-    //   console.log("Current question:", currentQuestion + 1);
-    //   console.log("Right answer:", questions[currentQuestion].rightAnswer);
-
-    let question = questions[currentQuestion];
-    document.getElementById("questiontext").innerHTML = question["question"];
-    document.getElementById("answer_1").innerHTML = question["answer_1"];
-    document.getElementById("answer_2").innerHTML = question["answer_2"];
-    document.getElementById("answer_3").innerHTML = question["answer_3"];
-    document.getElementById("answer_4").innerHTML = question["answer_4"];
-    document.getElementById("actual-question").innerHTML = currentQuestion + 1;
-    let progress = 0;
-    progress = currentQuestion / questions.length;
-    console.log(progress);
-    document.getElementById("progressBar").style.width = progress * 100 + "%";
-    document.getElementById("progressBar").innerHTML = `${Math.round(progress * 100)} %`;
-    document.getElementById("progress-bar").setAttribute("aria-valuenow", progress * 100);
+    updateProgressBar();
+    updateQuestionsInCard();
   }
 }
 
+function updateQuestionsInCard() {
+  let question = questions[currentQuestion];
+  document.getElementById("questiontext").innerHTML = question["question"];
+  document.getElementById("answer_1").innerHTML = question["answer_1"];
+  document.getElementById("answer_2").innerHTML = question["answer_2"];
+  document.getElementById("answer_3").innerHTML = question["answer_3"];
+  document.getElementById("answer_4").innerHTML = question["answer_4"];
+  document.getElementById("actual-question").innerHTML = currentQuestion + 1;
+}
+
+function updateProgressBar() {
+  let progress = 0;
+  progress = currentQuestion / questions.length;
+  document.getElementById("progressBar").style.width = progress * 100 + "%";
+  document.getElementById("progressBar").innerHTML = `${Math.round(progress * 100)} %`;
+  document.getElementById("progress-bar").setAttribute("aria-valuenow", progress * 100);
+}
+
+function showEndScreen() {
+  document.getElementById("bodyQuizActive").classList.toggle("d_none");
+  document.getElementById("bodyQuizInactive").classList.toggle("d_none");
+  document.getElementById("header-image").setAttribute("src", "./assets/img/trophy.png");
+  document.getElementById("trophyAmountOfQuestions").innerHTML = questions.length;
+  document.getElementById("correctAnswers").innerHTML = correctAnswers;
+}
+
+function gameOver() {
+  return currentQuestion == questions.length;
+}
+
 function checkAnswer(answer) {
-  if (answer == "answer_" + questions[currentQuestion].rightAnswer) {
-    // console.log("Richtig!");
+  if (answerCorrect(answer)) {
     document.getElementById(answer).parentNode.classList.add("text-bg-success");
     correctAnswers++;
   } else {
-    // console.log("Falsch!");
     document.getElementById(answer).parentNode.classList.add("text-bg-danger");
     document.getElementById("answer_" + questions[currentQuestion].rightAnswer).parentNode.classList.add("text-bg-success");
   }
   document.getElementById("next-button").disabled = false;
+}
+
+function answerCorrect(answer) {
+  return answer == "answer_" + questions[currentQuestion].rightAnswer;
 }
 
 function nextQuestion() {

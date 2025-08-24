@@ -3,7 +3,7 @@ body {
 }
 
 .container {
-  min-height: 100vh;
+  min-height: 90vh;
   background-color: #007aff !important;
   display: flex;
   justify-content: center;
